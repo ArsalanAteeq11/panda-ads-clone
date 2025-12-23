@@ -1,6 +1,4 @@
 import SplitSection from "../components/common/CommonSection";
-import CarouselCards from "../components/HomePage/ImagesGallery";
-import ScrollToTop from "../components/Layout/ScrollToTop";
 import Hero from "../components/HomePage/Hero";
 import TestimonialsSection from "../components/HomePage/TestimonialsSection";
 import CTASection from "../components/HomePage/CTASection";
