@@ -1,7 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Solutions", path: "/solutions" },
@@ -34,7 +35,10 @@ export default function Navbar() {
               {link.name}
             </NavLink>
           ))}
-          <button className="px-6 py-2.5 cursor-pointer rounded-full text-sm font-semibold ml-4 bg-[#ff2b85] text-white transition-all duration-500 ">
+          <button
+            onClick={() => navigate("/contact-us")}
+            className="px-6 py-2.5 cursor-pointer rounded-full text-sm font-semibold ml-4 bg-[#ff2b85] text-white transition-all duration-500 "
+          >
             Contact Us
           </button>
         </div>

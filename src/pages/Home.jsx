@@ -18,7 +18,11 @@ const Home = () => {
           className:
             "text-white font-bold mb-4 ml-10 text-4xl md:text-6xl max-w-lg",
         }}
-        desc="Advertise with foodpanda and connects with millions of ready-to-shop customers within and beyond tha foodpanda app."
+        desc={{
+          text: "Advertise with foodpanda and connects with millions of ready-to-shop customers within and beyond tha foodpanda app.",
+
+          className: "ml-10 mb-4 text-white max-w-xl",
+        }}
         button="Get in touch"
       />
       <HeroSection />

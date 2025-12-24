@@ -2,141 +2,270 @@ import React, { useState } from "react";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
+    company: "",
+    jobTitle: "",
     firstName: "",
     lastName: "",
     email: "",
-    message: "",
+    countryPhonePrefix: "",
+    mobile: "",
+    industry: "",
+    country: "",
+    city: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setFormData({ firstName: "", lastName: "", email: "", message: "" });
-  };
-
-  const handleChange = (field, value) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    console.log("Form submitted:", formData);
+    // Handle form submission here
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Main Content */}
-      <div className="flex-1 bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-12">
-          <div className="flex flex-col lg:flex-row items-center gap-8 mx-auto">
-            {/* Form Section */}
-            <div className="flex-1 ">
-              <h1 className="text-xl font-bold text-gray-900 mb-8">
-                Contact form
-              </h1>
-
-              {submitted && (
-                <div className="mb-4 p-3 bg-green-100 text-green-700 rounded">
-                  Message submitted successfully!
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Name Fields */}
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    Name <span className="text-red-500">*</span>
-                  </label>
-                  <div className="flex gap-4">
-                    <div className="flex-1">
-                      <input
-                        type="text"
-                        value={formData.firstName}
-                        onChange={(e) =>
-                          handleChange("firstName", e.target.value)
-                        }
-                        className="w-full h-10 px-3 border border-gray-300 focus:outline-none focus:border-gray-400"
-                        required
-                      />
-                      <span className="text-xs text-blue-600 mt-1 block">
-                        First
-                      </span>
-                    </div>
-                    <div className="flex-1">
-                      <input
-                        type="text"
-                        value={formData.lastName}
-                        onChange={(e) =>
-                          handleChange("lastName", e.target.value)
-                        }
-                        className="w-full h-10 px-3 border border-gray-300 focus:outline-none focus:border-gray-400"
-                        required
-                      />
-                      <span className="text-xs text-blue-600 mt-1 block">
-                        Last
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Email Field */}
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    Email <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => handleChange("email", e.target.value)}
-                    className="w-full h-10 px-3 border border-gray-300 focus:outline-none focus:border-gray-400"
-                    required
-                  />
-                </div>
-
-                {/* Message Field */}
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    Your message <span className="text-red-500">*</span>
-                  </label>
-                  <textarea
-                    value={formData.message}
-                    onChange={(e) => handleChange("message", e.target.value)}
-                    className="w-full h-32 px-3 py-2 border border-gray-300 focus:outline-none focus:border-gray-400 resize-none"
-                    required
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className="bg-pink-500 hover:bg-pink-600 text-white font-medium px-8 py-2 rounded-full text-sm transition-colors"
-                >
-                  Submit
-                </button>
-              </form>
+    <div className="max-w-5xl mx-auto p-8">
+      <form onSubmit={handleSubmit}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+          {/* Left Column */}
+          <div className="space-y-6">
+            {/* Company */}
+            <div>
+              <label
+                htmlFor="company"
+                className="block text-sm text-gray-700 mb-2"
+              >
+                Company
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              />
             </div>
 
-            {/* Panda Image Section */}
-            <div className=" flex-1">
-              <img
-                src="./images/contact.webp"
-                alt="Cute Panda"
-                className="w-full h-full object-cover"
+            {/* Job Title */}
+            <div>
+              <label
+                htmlFor="jobTitle"
+                className="block text-sm text-gray-700 mb-2"
+              >
+                Job Title
+              </label>
+              <input
+                type="text"
+                id="jobTitle"
+                name="jobTitle"
+                value={formData.jobTitle}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              />
+            </div>
+
+            {/* First Name */}
+            <div>
+              <label
+                htmlFor="firstName"
+                className="block text-sm text-gray-700 mb-2"
+              >
+                First Name
+              </label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              />
+            </div>
+
+            {/* Last Name */}
+            <div>
+              <label
+                htmlFor="lastName"
+                className="block text-sm text-gray-700 mb-2"
+              >
+                Last Name
+              </label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm text-gray-700 mb-2"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              />
+            </div>
+          </div>
+
+          {/* Right Column */}
+          <div className="space-y-6">
+            {/* Country Phone Prefix */}
+            <div>
+              <label
+                htmlFor="countryPhonePrefix"
+                className="block text-sm text-gray-700 mb-2"
+              >
+                Country Phone Prefix
+              </label>
+              <select
+                id="countryPhonePrefix"
+                name="countryPhonePrefix"
+                value={formData.countryPhonePrefix}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent appearance-none bg-white"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23666'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+                  backgroundPosition: "right 0.5rem center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "1.5em 1.5em",
+                  paddingRight: "2.5rem",
+                }}
+              >
+                <option value="">--None--</option>
+                <option value="+1">+1 (USA/Canada)</option>
+                <option value="+44">+44 (UK)</option>
+                <option value="+91">+91 (India)</option>
+                <option value="+92">+92 (Pakistan)</option>
+              </select>
+            </div>
+
+            {/* Mobile */}
+            <div>
+              <label
+                htmlFor="mobile"
+                className="block text-sm text-gray-700 mb-2"
+              >
+                Mobile
+              </label>
+              <input
+                type="tel"
+                id="mobile"
+                name="mobile"
+                value={formData.mobile}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+              />
+            </div>
+
+            {/* Industry */}
+            <div>
+              <label
+                htmlFor="industry"
+                className="block text-sm text-gray-700 mb-2"
+              >
+                Industry
+              </label>
+              <select
+                id="industry"
+                name="industry"
+                value={formData.industry}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent appearance-none bg-white"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23666'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+                  backgroundPosition: "right 0.5rem center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "1.5em 1.5em",
+                  paddingRight: "2.5rem",
+                }}
+              >
+                <option value="">--None--</option>
+                <option value="technology">Technology</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="finance">Finance</option>
+                <option value="retail">Retail</option>
+                <option value="food">Food & Beverage</option>
+              </select>
+            </div>
+
+            {/* Country */}
+            <div>
+              <label
+                htmlFor="country"
+                className="block text-sm text-gray-700 mb-2"
+              >
+                Country
+              </label>
+              <select
+                id="country"
+                name="country"
+                value={formData.country}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent appearance-none bg-white"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23666'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+                  backgroundPosition: "right 0.5rem center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "1.5em 1.5em",
+                  paddingRight: "2.5rem",
+                }}
+              >
+                <option value="">--None--</option>
+                <option value="usa">United States</option>
+                <option value="uk">United Kingdom</option>
+                <option value="india">India</option>
+                <option value="pakistan">Pakistan</option>
+              </select>
+            </div>
+
+            {/* City */}
+            <div>
+              <label
+                htmlFor="city"
+                className="block text-sm text-gray-700 mb-2"
+              >
+                City
+              </label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent"
               />
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Footer */}
-      <div className="bg-gray-100 py-6">
-        <div className="text-center text-sm text-gray-600">
-          <p>Got a question about your order?</p>
-          <p>Need help with some of your app features?</p>
-          <p>
-            Contact{" "}
-            <span className="text-blue-600 font-medium">Help Centre</span> via
-            app menu.
-          </p>
+        {/* Submit Button */}
+        <div className="mt-8 flex justify-end">
+          <button
+            type="submit"
+            className="bg-[#ff2b85] text-white px-10 py-2.5 rounded-full font-medium hover:bg-[#ff2b85]/90 transition-colors shadow-lg"
+          >
+            Submit
+          </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

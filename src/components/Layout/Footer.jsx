@@ -8,7 +8,11 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         {/* TOP GRID */}
         <div className="flex items-center gap-3 mb-6">
-          <img src="./images/foodpanda_logo_2023.svg" alt="" />
+          <img
+            src="./images/foodpanda_panda-ads_logo.svg"
+            className="h-8"
+            alt=""
+          />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* LOGO + NAVIGATE */}

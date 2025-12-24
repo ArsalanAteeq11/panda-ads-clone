@@ -6,10 +6,14 @@ const Contact = () => {
     <>
       <Hero
         type="image"
-        src="/images/fp-contact.webp"
+        src="/images/contact.jpg"
         heading={{
-          text: <>Contact us</>,
-          className: "text-white font-bold mb-16 ml-10 text-4xl md:text-7xl",
+          text: <>Get in touch</>,
+          className: "text-white font-bold mb-4 ml-10 text-4xl md:text-7xl",
+        }}
+        desc={{
+          text: " Explore how panda ads can help boost your brand and connect you with millions of customers.",
+          className: "text-white mb-20 ml-10 max-w-xl text-xl",
         }}
       />
 

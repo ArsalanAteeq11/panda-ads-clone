@@ -47,7 +47,7 @@ export default function Hero({
           {heading?.text && (
             <h1 className={heading.className}>{heading.text}</h1>
           )}
-          <p className="ml-10 mb-4 text-white max-w-xl">{desc}</p>
+          {desc?.text && <p className={desc.className}>{desc.text}</p>}
 
           {button !== undefined && (
             <button className="px-8 py-2 ml-10 mb-16 text-[#ff2b85] border-[#ff2b8f] rounded-3xl bg-white text-lg w-max cursor-pointer font-bold ">
