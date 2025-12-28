@@ -10,17 +10,17 @@ export default function HeroSection() {
           food and grocery delivery network*
         </h1>
 
-        <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-64 mt-12">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-42 lg:gap-64 mt-12">
           <div>
-            <h2 className="text-5xl md:text-7xl font-bold ">125M</h2>
+            <h2 className="text-5xl lg:text-7xl font-bold ">125M</h2>
             <p className=" text-xl font-bold ">app downloads</p>
           </div>
           <div>
-            <h2 className="text-5xl md:text-7xl font-bold ">11</h2>
+            <h2 className="text-5xl lg:text-7xl font-bold ">11</h2>
             <p className=" text-xl font-bold">markets</p>
           </div>
           <div>
-            <h2 className="text-5xl md:text-7xl font-bold ">400+</h2>
+            <h2 className="text-5xl lg:text-7xl font-bold ">400+</h2>
             <p className="text-xl font-bold">cities</p>
           </div>
         </div>

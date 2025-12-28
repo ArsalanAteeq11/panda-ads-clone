@@ -9,12 +9,19 @@ import FooterCTA from "../components/Solutions/FooterCTA";
 const Solutions = () => {
   return (
     <>
-      <HeroSection />
+      <HeroSection
+        title="Boost your brand with our retail media solutions"
+        desc="Harness the power of first-party retail data to connect with millions
+          of high-value customers within and beyond the app."
+      />
       <DisplayAdsSection />
       <BoostConversionsSection />
       <OffAppSection />
       <MediaKitSection />
-      <FooterCTA />
+      <FooterCTA
+        text="Start advertising with panda ads today!"
+        button="Get in touch"
+      />
     </>
   );
 };

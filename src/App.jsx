@@ -5,6 +5,9 @@ import Home from "./pages/Home";
 import ScrollToTop from "./components/Layout/ScrollToTop";
 import Solutions from "./pages/Solutions";
 import Contact from "./pages/Contact";
+import Insights from "./pages/Insights";
+import CaseStudies from "./pages/CaseStudies";
+import NewsRoom from "./pages/NewsRoom";
 
 export default function App() {
   return (
@@ -14,6 +17,9 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/solutions" element={<Solutions />} />
         <Route path="/contact-us" element={<Contact />} />
+        <Route path="/insights" element={<Insights />} />
+        <Route path="/case-studies" element={<CaseStudies />} />
+        <Route path="/newsroom" element={<NewsRoom />} />
       </Routes>
       <ScrollToTop />
       <Footer />

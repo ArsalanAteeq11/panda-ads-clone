@@ -6,8 +6,25 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Solutions", path: "/solutions" },
-    { name: "Resources", path: "/resources" },
-    { name: "Tools", path: "/tools" },
+
+    {
+      name: "Resources",
+      dropdown: [
+        { name: "Insights", path: "/insights" },
+        { name: "Case Studies", path: "/case-studies" },
+        { name: "News Room", path: "/newsroom" },
+      ],
+    },
+    {
+      name: "Tools",
+      dropdown: [
+        {
+          name: "Media Kit Generator",
+          external: true,
+          path: "https://mediakit-pandaadsfoodpanda.vercel.app/",
+        },
+      ],
+    },
   ];
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -25,16 +42,42 @@ export default function Navbar() {
       <div className="hidden lg:flex items-center gap-32  ">
         <div className="hidden md:flex items-center text-sm gap-4">
           {navLinks.map((link, i) => (
-            <NavLink
-              key={i}
-              to={link.path}
-              className={({ isActive }) =>
-                `font-semibold ${isActive ? "border-b-2 border-[#ff2b85]" : ""}`
-              }
-            >
-              {link.name}
-            </NavLink>
+            <div key={i} className="relative group">
+              <NavLink
+                to={link.path}
+                className="font-semibold flex items-center gap-1  "
+              >
+                {link.name}
+              </NavLink>
+
+              {link.dropdown && (
+                <div className="absolute left-0 top-full mt-3 w-44 bg-white shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                  {link.dropdown.map((item, j) =>
+                    item.external ? (
+                      <a
+                        key={j}
+                        href={item.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 block text-sm hover:bg-gray-100 border-b last:border-b-0"
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      <NavLink
+                        key={j}
+                        to={item.path}
+                        className="block px-4 py-2 text-sm hover:bg-gray-100"
+                      >
+                        {item.name}
+                      </NavLink>
+                    )
+                  )}
+                </div>
+              )}
+            </div>
           ))}
+
           <button
             onClick={() => navigate("/contact-us")}
             className="px-6 py-2.5 cursor-pointer rounded-full text-sm font-semibold ml-4 bg-[#ff2b85] text-white transition-all duration-500 "
@@ -92,20 +135,46 @@ export default function Navbar() {
           </svg>
         </button>
         {navLinks.map((link, i) => (
-          <NavLink
-            key={i}
-            to={link.path}
-            className={({ isActive }) =>
-              `font-semibold ${isActive ? "border-t-2 border-[#ff2b85]" : ""}`
-            }
-            onClick={() => setIsMenuOpen(false)}
-          >
-            {link.name}
-          </NavLink>
-        ))}
+          <div key={i} className="relative group">
+            <NavLink
+              to={link.path}
+              className="font-semibold flex items-center gap-1  "
+            >
+              {link.name}
+            </NavLink>
 
-        <button className="bg-black text-white px-8 py-2.5 rounded-full transition-all duration-500">
-          Login
+            {link.dropdown && (
+              <div className="absolute left-0 top-full mt-3 w-44 bg-white shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                {link.dropdown.map((item, j) =>
+                  item.external ? (
+                    <a
+                      key={j}
+                      href={item.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 block text-sm hover:bg-gray-100 border-b last:border-b-0"
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
+                    <NavLink
+                      key={j}
+                      to={item.path}
+                      className="block px-4 py-2 text-sm hover:bg-gray-100"
+                    >
+                      {item.name}
+                    </NavLink>
+                  )
+                )}
+              </div>
+            )}
+          </div>
+        ))}
+        <button
+          onClick={() => navigate("/contact-us")}
+          className="px-6 py-2.5 cursor-pointer rounded-full text-sm font-semibold ml-4 bg-[#ff2b85] text-white transition-all duration-500 "
+        >
+          Contact Us
         </button>
       </div>
     </nav>
